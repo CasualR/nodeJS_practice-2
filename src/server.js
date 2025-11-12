@@ -13,6 +13,7 @@ const __dirname = dirname(__filename)
 // Middleware
 app.use(express.json())
 
+
 // Tells express to serve all files from the public folder as static assets / file.
 app.use(express.static(path.join(__dirname, '../public')))
 
