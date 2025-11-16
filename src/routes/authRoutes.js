@@ -16,18 +16,16 @@ router.post('/register', (req, res) => {
 
     // save the new user and hashed password to the db
     try {
-        const insertUser = db.prepare(`INSERT INTO users (username, password)
-        VALUES (?, ?)`)
+        const insertUser = db.prepare(`INSERT INTO users (username, password) VALUES (?, ?)`)
         const result = insertUser.run(username, hashedPassword)
 
         // now that we have a user, I want to add their first todo for them
         const defaultTodo = `Hello :) Add your first todo!`
-        const insertTodo = db.prepare(`INSERT INTO todos (user_id, task)
-        VALUES (?, ?)`)
+        const insertTodo = db.prepare(`INSERT INTO todos (user_id, task) VALUES (?, ?)`)
         insertTodo.run(result.lastInsertRowid, defaultTodo)
 
         // create a token
-        const token = jwt.sign({id: result.lastInsertRowid}, process.env.JWT_SECRET, { expiresIn: '24h' })
+        const token = jwt.sign({ id: result.lastInsertRowid }, process.env.JWT_SECRET, { expiresIn: '24h' })
         res.json({ token })
     } catch (err) {
         console.log(err.message)
@@ -37,7 +35,7 @@ router.post('/register', (req, res) => {
 
 router.post('/login', (req, res) => {
     // we get their email, and we look up the password associated with that email in the database
-    // but we get it back and see it`s encrypted, which means that we cannot compare it to the one the user just used trying to login 
+    // but we get it back and see it's encrypted, which means that we cannot compare it to the one the user just used trying to login 
     // so what we can to do, is again, one way encrypt the password the user just entered
 
     const { username, password } = req.body
@@ -47,16 +45,15 @@ router.post('/login', (req, res) => {
         const user = getUser.get(username)
 
         // if we cannot find a user associated with that username, return out from the function
-        if (!user) {
-            return res.status(404).send({ message: "User not found" })
-        }
+        if (!user) { return res.status(404).send({ message: "User not found" }) }
 
         const passwordIsValid = bcrypt.compareSync(password, user.password)
         // if the password does not match, return out of the function
         if (!passwordIsValid) { return res.status(401).send({ message: "Invalid password" }) }
         console.log(user)
+
         // then we have a successful authentication
-        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '24h'  } )
+        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '24h' })
         res.json({ token })
     } catch (err) {
         console.log(err.message)
@@ -65,4 +62,4 @@ router.post('/login', (req, res) => {
 })
 
 
-export default router;
+export default router

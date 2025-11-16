@@ -12,7 +12,7 @@ db.exec(`
 
 db.exec(`
     CREATE TABLE todos (
-        id INTEGER,
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
         user_id INTEGER, 
         task TEXT,
         completed BOOLEAN DEFAULT 0,
@@ -20,4 +20,4 @@ db.exec(`
     )
     `)
 
-export default db;
+export default db
