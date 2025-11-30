@@ -10,7 +10,6 @@ router.post('/register', async (req, res) => {
     const { username, password } = req.body
     // save the username and an irreversibly encrypted password
     // save koldan@gmail.com | password
-
     
     // encrypt the password
     const hashedPassword = bcrypt.hashSync(password, 8)
