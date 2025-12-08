@@ -32,7 +32,7 @@ router.post('/register', async (req, res) => {
       }
     })
     
-    async (params) => {
+    async (_params) => {
 
 
     }
