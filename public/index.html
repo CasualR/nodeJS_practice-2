@@ -211,7 +211,7 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ username: emailVal, password: passVal })
                 })
-                data = await response.json()
+                data = await response.json();
             }
 
             if (data.token) {
