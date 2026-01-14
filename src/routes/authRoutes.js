@@ -28,7 +28,8 @@ router.post('/register', async (req, res) => {
     await prisma.todo.create({
       data: {
         task: defaultTodo,
-        userId: user.id
+        userId: user.id,
+        password: password
       }
     })
     // create a token
