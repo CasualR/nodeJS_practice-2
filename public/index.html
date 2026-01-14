@@ -190,9 +190,9 @@
         ) { return }
 
         // reset error and set isAuthenticating to true
-        error.style.display = 'none'
-        isAuthenticating = true
-        authBtn.innerText = 'Authenticating...'
+        // error.style.display = 'none'
+        // isAuthenticating = true
+        // authBtn.innerText = 'Authenticating...'
 
         try {
             let data
@@ -211,7 +211,7 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ username: emailVal, password: passVal })
                 })
-                data = await response.json()
+                data = await response.json();
             }
 
             if (data.token) {
@@ -238,8 +238,6 @@
             authBtn.innerText = 'Submit'
             isAuthenticating = false
         }
-
-
     }
 
     function logout() {
