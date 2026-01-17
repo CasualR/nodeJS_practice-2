@@ -25,13 +25,13 @@ router.post('/register', async (req, res) => {
 
     // now that we have a user, I want to add their first todo for them
     const defaultTodo = `Hello :) Do not add your first todo!`
-    await prisma.todo.create({
-      data: {
-        task: defaultTodo,
-        userId: user.id,
-        password: password
-      }
-    })
+    // await prisma.todo.create({
+    //   data: {
+    //     task: defaultTodo,
+    //     userId: user.id,
+    //     password: password
+    //   }
+    // })
     // create a token
     // const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '24h' })
     // res.json({ token })
