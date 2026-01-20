@@ -38,7 +38,7 @@ router.post('/register', async (req, res) => {
     res.json({ token })
   } catch (err) {
     console.log(err.message)
-    res.sendStatus(502)
+    res.sendStatus(503)
   }
 })
 
