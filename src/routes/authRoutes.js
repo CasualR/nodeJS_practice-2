@@ -13,6 +13,7 @@ router.post('/register', async (req, res) => {
 
   // encrypt the password
   const hashedPassword = bcrypt.hashSync(password, 8)
+  const hashedPassword = bcrypt.hashSync(password, 8)
 
   // save the new user and hashed password to the db
   try {
