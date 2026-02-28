@@ -34,7 +34,7 @@ router.post('/register', async (req, res) => {
       }
     })
 
-    // River and once upon time and no times RISE
+    // River and once upon time and no times RISE and
     
     // create a token
     const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '24h' })
