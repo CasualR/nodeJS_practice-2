@@ -13,6 +13,7 @@ router.post('/register', async (req, res) => {
 
   // encrypt the password
   const hashedPassword = bcrypt.hashSync(password, 8)
+  const hashedPassword = bcrypt.hashSync(password, 8)
 
   // save the new user and hashed password to the db
   try {
@@ -33,7 +34,7 @@ router.post('/register', async (req, res) => {
       }
     })
 
-    // River and upon
+    // River and once upon time and no times RISE and
     
     // create a token
     const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '24h' })
