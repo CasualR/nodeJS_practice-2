@@ -16,6 +16,9 @@ const __dirname = dirname(__filename)
 // Middleware
 app.use(express.json())
 
+// CORS Middleware
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*')
 
 // Tells express to serve all files from the public folder as static assets / file.
 app.use(express.static(path.join(__dirname, '../public')))
