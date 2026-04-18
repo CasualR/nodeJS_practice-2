@@ -19,6 +19,10 @@ app.use(express.json())
 // CORS Middleware
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*')
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization')
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+    next()
+})
 
 // Tells express to serve all files from the public folder as static assets / file.
 app.use(express.static(path.join(__dirname, '../public')))
@@ -26,6 +30,7 @@ app.use(express.static(path.join(__dirname, '../public')))
 // Serving up the HTML file from the /public directory
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'))
+
 })
 
 // Routes
