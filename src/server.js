@@ -19,8 +19,8 @@ app.use(express.json())
 // CORS Middleware
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*')
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization')
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
+
     next()
 })
 
@@ -31,6 +31,8 @@ app.use(express.static(path.join(__dirname, '../public')))
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'))
 
+
+
 })
 
 // Routes
@@ -38,5 +40,7 @@ app.use('/auth', authRoutes)
 app.use('/todos', authMiddleware, todoRoutes)
 
 app.listen(PORT, () => {
+
     console.log(`Server has started on port: ${PORT}`)
+
 })
