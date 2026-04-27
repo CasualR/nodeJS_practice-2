@@ -22,6 +22,7 @@ app.use((req, res, next) => {
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization')
 
+
     next()
 })
 
@@ -42,6 +43,6 @@ app.use('/todos', authMiddleware, todoRoutes)
 
 app.listen(PORT, () => {
 
-    console.log(`Server has started on port: ${PORT}`)
+    console.log(`Server has started on port as well: ${PORT}`)
 
 })
