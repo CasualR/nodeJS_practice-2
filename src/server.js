@@ -31,6 +31,12 @@ app.use(express.static(path.join(__dirname, '../public')))
 
 // Serving up the HTML file from the /public directory
 app.get('/', (req, res) => {
+
+
+
+
+
+    
     res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
 
