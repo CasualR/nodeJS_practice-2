@@ -41,6 +41,7 @@ app.use('/todos', authMiddleware, todoRoutes)
 
 
 
+
 app.listen(PORT, () => {
 
     console.log(`Server has started on port as well: ${PORT}`)
